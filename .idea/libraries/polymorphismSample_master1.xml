@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="polymorphismSample-master1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/polymorphismSample-master/selenium-server-standalone-3.12.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/polymorphismSample-master/testng-6.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
