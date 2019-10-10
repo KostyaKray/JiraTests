@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import okio.Timeout;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,21 +8,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterTest;
-
 import javax.swing.*;
-
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
-
 import static org.testng.Assert.assertTrue;
-
 public class CreateNewIssue {
 
     WebDriver driver;
 
     @BeforeTest
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\HP\\Desktop\\Java Projects\\Drivers\\chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         this.driver = new ChromeDriver();
 
     }
@@ -44,6 +41,7 @@ public class CreateNewIssue {
     By textfield = By.xpath("//*[@class = 'aui-nav-selected'=1]");
 
     @Test
+
     public void AddingNewIssue() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 20);
         driver.manage().window().maximize();
@@ -53,7 +51,8 @@ public class CreateNewIssue {
         this.driver.findElement(userNameInput).sendKeys(userName);
         this.driver.findElement(passwordInput).sendKeys(password);
         this.driver.findElement(enterButton).click();
-        assertTrue(this.driver.findElement(NewTicket).isDisplayed());
+        //assertTrue(this.driver.findElement(NewTicket).isDisplayed());
+        Assert.assertEquals(true, driver.findElement(NewTicket).isDisplayed());
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@title='User profile for Kostya Kray']")));
 
         // Create new issue
