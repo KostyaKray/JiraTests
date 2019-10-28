@@ -12,16 +12,9 @@ import javax.swing.*;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertTrue;
-public class CreateNewIssue {
 
-    WebDriver driver;
+public class CreateNewIssue extends BaseTest{
 
-    @BeforeTest
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        this.driver = new ChromeDriver();
-
-    }
     //Main Page
     By userNameInput = By.xpath("//*[@name='os_username']");
     By passwordInput = By.xpath("//*[@name='os_password']");
@@ -71,7 +64,5 @@ public class CreateNewIssue {
         // Check that issue is created
         assertTrue(this.driver.findElement(By.partialLinkText("New issue")).isDisplayed());
     }
-
-    @AfterTest
-        public void tearDown() { this.driver.quit(); }
 }
+
